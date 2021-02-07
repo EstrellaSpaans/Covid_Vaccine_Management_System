@@ -31,7 +31,7 @@ After the first trial of the data management system, CVS's chief data officer ha
 
 # 2. **Database Structure**
 
-[Database Structure](https://static.wixstatic.com/media/3fe52d_1d408210ffc94812971bdc69e2c95f51~mv2.png)
+![Database Structure](https://static.wixstatic.com/media/3fe52d_1d408210ffc94812971bdc69e2c95f51~mv2.png)
 
 **Table: admin_info**
 
