@@ -35,7 +35,7 @@ After the first trial of the data management system, CVS's chief data officer ha
 
 **Table: admin_info**
 
-This table is used by the CVS headquarters and provides information for each location. This includes the address, the CNN number to verify the Medicare/Medicaid certification, what type of operating they include. Number 17 refers to a pharmacy chain (National Center for Immunization and Respiratory Diseases, 2020).
+This table provides information for each location. This includes the address, the CNN number to verify the Medicare/Medicaid certification, and whether the operation is an office or a pharmacy. Number 17 refers to a pharmacy chain [(Centers for Disease Control and Prevention, 2020)](https://www.cdc.gov/vaccines/covid-19/reporting/requirements/specification-instructions.html).
 
 **Table: departments_info**
 
@@ -43,7 +43,7 @@ The department table shows the name of each department that is available in each
 
 **Table: medical_records**
 
-The medical record table shows the information needed on whether someone is eligible to receive a specific vaccine based on a prescribed recommendation. A medical record is only created once a doctor has entered the prescription in an API system.
+The medical record table shows the information needed on whether someone is eligible to receive a specific vaccine based on a prescribed recommendation. A medical record is only created once a doctor has entered the prescription into an API system.
 
 **Table: insurance_info**
 
@@ -55,7 +55,7 @@ This table provides more information about the vaccine itself: the name, the man
 
 **Table: appointment_info**
 
-This table shows the information for the first appointment for the first shot and the second appointment for the second shot. This table will be checked by a staff member when a patient arrives. It an able be updated in the portal by the patient itself or by a staff member.
+This table shows the information for the first appointment for the first shot and the second appointment for the second shot. This table will be checked by a staff member when a patient arrives. It is able to be updated in the portal by the patient or by a staff member.
 
 **Table: staff_info**
 
@@ -67,7 +67,7 @@ This table shows each patient's general information and connections to the medic
 
 **Table: batch_info**
 
-The information in the batch_info table shows for each batch, such as temperature storage info and when the vaccine expires.
+The information in the batch_info table shows info for each batch, such as temperature, storage info, and when the vaccine expires.
 
 **Table: vaccine_inventory**
 
@@ -85,7 +85,7 @@ This table shows the latest COVID-19 test of the patient and the results.
 
 ### 1. **Report: HR Daily Stats**
 
-Considering staff got the mistake to take the vaccine to an unqualified patient. This procedure is made for tracking the staffs working on the specific date. For one reason, it can shows which group is responsible for injection in the specific places. On the other hand, it can be measured if there is enough staff members for each day.  And how does the group of people work for injection?
+This report shows how many patients each employee has vaccinated. It also shows the latest workday. This gives a sense of hours as well as the performance of each employee. It is important to keep track of when the staff are deployed. 
 
 ```sql
 /* - COLUMNS: staff_id,staff_name,Number of Shot,Latest Work Date,Location
@@ -130,16 +130,17 @@ ORDER BY
 
 R**esult:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled.png)
+![results_report_1](https://static.wixstatic.com/media/3fe52d_34d5e3457553492cb2b0f628242b2df7~mv2.jpg)
 
 **Insights can be drawn:**
 
-- Daily work for some staff is not enough. Some of them can take more shots for the patients for sure.
-- The number of Staff working on each day is growing gradually, which means if the company would like to save the labor cost, they need to train the staff to service more patients daily.
+-	Some staff are not working enough hours. The efficiency varies greatly showing that some staff are able to vaccinate more people in less time. The patients seen and division of work differs in each location.
+- 	The number of staff working on each day is growing gradually, which means if the company wants to save the labor cost, they need to train the staff to service more patients daily.
+
 
 ### 2. **Report: Stock Brand Inventory**
 
-This query is important in order to know how many vaccinations each locations have left. As a pharmacy you want to match the demand (based on the appointments) and make sure that the right brand is in stock. This query shows each location number, the type of vaccine, and the number that they still have left in stock.  By showing the records where there is a NULL value, it means that the vaccine is not used yet. This query shows an overview of all stock details. 
+This query is essential in order to know how many vaccinations each location has left. As a pharmacy, you want to match the demand (based on the appointments) and make sure that the right brand is in stock. This query shows each location number, the type of vaccine, and the number of vaccines they still have left in stock. Showing the records where there is a NULL value means that the vaccine is not used yet. This query shows an overview of all stock details.
 
 ```sql
 /* - COLUMNS: location_id, vaccine_name
@@ -178,17 +179,18 @@ ORDER BY
 
 **Result:** 
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.40.38_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.40.38_PM.png)
+![results_report_2](https://static.wixstatic.com/media/3fe52d_d13983d906884f2c9a2e2b4d011acda2~mv2.jpg)
 
 **Insights that can be drawn:** 
 
-- Locations 6,7,8,10 has the least inventory (below 120 vaccines in total).
-- The location on Boylston Street only has 3 Moderna vaccines left.
-- There are more Moderna vaccines in stock compared to the Phizers BioNTech vaccine.
+-	Locations 6,7,8,10 has the least inventory (below 120 vaccines in total). 
+-	The location on Boylston Street only has 3 Moderna vaccines left. 
+-	There are more Moderna vaccines in stock compared to the Phizers BioNTech vaccine. 
+
 
 ### 3**. Report: Stock Batch Inventory with Expiration Days**
 
-In order to manage inventory properly, the batches that expire the earliest, should be consumed first. Inventory staff members are responsible to add each batch into the inventory correctly, sorted from the earliest to latest date. The service staff members have to make sure that they pick the right vaccine number and not accidently choose a later batch. However, there will always be a case that the wrong batch gets picked because of human error. 
+To manage inventory properly, the batches that expire the earliest should be consumed first. Inventory staff members are responsible for adding each batch into the inventory correctly, sorted from the earliest to the latest date. The service staff members have to make sure that they pick the right vaccine number and not accidentally choose a later batch. However, there will always be a case that the wrong batch gets selected because of human error. 
 
 ```sql
 /* - COLUMNS: batch_no, vaccine_no, expiration_date
@@ -225,15 +227,15 @@ ORDER BY
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_8.43.07_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_8.43.07_PM.png)
+![reports_result_3](https://static.wixstatic.com/media/3fe52d_55cc8b244d4b41afb9e803f95dbd2079~mv2.jpg)
 
 **Insights that can be drawn:** 
 
-- Batches are not chosen correctly or sorted correctly as some batches that have a later expiration date have less inventory than batches with a sooner expiration date.
+-	Batches are not chosen correctly or sorted correctly as some batches that have a later expiration date have less inventory than batches with a sooner expiration date.
 
 ### 4. Report: Top 3 Pharmacy Locations
 
-In order reallocate inventory within the CVS in Boston or to receive inventory in general, it is important to know which locations are the most visited. These location have to make sure that they have enough inventory. In combination with thethe previous question, CVS can now get a better grasp on how to allocate the inventory. 
+To reallocate inventory within the CVS branches in Boston or to receive inventory in general, it is essential to know which locations are the most visited. These locations have to make sure that they have enough inventory. In combination with the previous question, CVS can now better grasp how to allocate the inventory. 
 
 ```sql
 /* - COLUMNS: street, record_id
@@ -255,15 +257,15 @@ LIMIT 3;
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_6.06.24_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_6.06.24_PM.png)
+![report_4_results](https://static.wixstatic.com/media/3fe52d_de63f501efb54e3ea74ba97fb0d2248f~mv2.jpg)
 
 **Insights that can be drawn:** 
 
-- In order to meet the demand, the pharmacy located at '285 Columbus Ave.' does not have a lot of inventory available.
+-	In order to meet the demand, the pharmacy located at '285 Columbus Ave.' does not have a lot of inventory available.
 
-### 5**. Report: Un-insurred Patients Administration**
+### 5**. Report: Uninsured-Patients Administration**
 
-This query is important because it will give a list of all the people that do not have insurance. The address of each patient is also presented, which makes if for the finance department easier to send a bill to each of these people (if this is applicable). 
+This query is important because it will list all the people who do not have insurance. The address of each patient is also presented, making it easier for the finance department to send a bill to each of these people (if this is applicable).
 
 ```sql
 /* - COLUMNS: patient name, street, zip, city, state 
@@ -297,15 +299,15 @@ GROUP BY
 
 **Result**:
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.41.40_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.41.40_PM.png)
+![result_5_report](https://static.wixstatic.com/media/3fe52d_173bcdd5fb724f1fa1b977dbd364c224~mv2.jpg)
 
 **Insights that can be drawn:** 
 
-- Approximately 70% of the un-insured 104 people  live in the suburbs of Boston.
+-	Approximately 70% of the uninsured 104 people  live in the suburbs of Boston.
 
 ### 6**.  Report: Fully Vaccinated Patients**
 
-This information is important information that can be shared with the government. It keeps track of the number of people that had both of their shots regardless of the type of vaccine. A accumaltive overview of all vaccination locations, gives the government a full view of the immunization progress of each state. 
+This information is essential information that can be shared with the government. It keeps track of the number of people that had both of their shots regardless of the type of vaccine. An accumulative overview of all vaccination locations gives the government a full view of each state's immunization progress.
 
 ```sql
 /* - COLUMNS: vaccine_name, shot_no
@@ -337,15 +339,15 @@ GROUP BY
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.44.28_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.44.28_PM.png)
+![report_result_6](https://static.wixstatic.com/media/3fe52d_82a51567c47742348f571e53017e1c6a~mv2.jpg)
 
 **Insights can be drawn:** 
 
-- There are more people with the Moderna vacinne that are vaccinated at the moment.
+-	There are more people with the Moderna vaccine that are vaccinated at the moment.
 
 ### 7**. Report: Fully Vaccinated Patients By Occupation**
 
-The query indicates how many people in different occupation have been accepted full vaccine who live in Boston. 
+The query indicates how many people in different Occupations have been vaccinated who live in Boston. This query could give the government additional information on whether most people are vaccinated according to the vaccine release stages.  
 
 ```sql
 /* - COLUMNS: Occupation,Number of People
@@ -375,15 +377,11 @@ Order BY
 
 **Result:** 
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%201.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%201.png)
+![report_7_result](https://static.wixstatic.com/media/3fe52d_1e1b3116646f485ab9824a84136e4aba~mv2.jpg)
 
-**Insights can be drawn:**
+### 8**. Report: Incorrectly given Vaccines: Covid-19 test**
 
-- Need to push more people to take the fully vaccine.
-
-### 8**. Report: Incorrectly-given Vaccines: Covid-19 test**
-
-How many patients received the vaccine despite having a "negative" test result older than 7 days? This query is created for a view to check if the staff members made the mistake. Considering the effectiveness of the vaccine, patients need to show the negative testing result which they got in 7 days ahead.
+How many patients received the vaccine despite having a "negative" test result older than seven days? This query was created to check if the staff members made a mistake. Considering the vaccine's effectiveness, patients need to show the negative testing result they got within 7 days prior to their vaccination. This report is created with a view, which makes it easy to access the report. 
 
 ```sql
 /* - Create a View named 7_days_ahead_testing 
@@ -442,15 +440,15 @@ WHERE
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%202.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%202.png)
+![result_report_8](https://static.wixstatic.com/media/3fe52d_db5d7f156f2b472899292cc6ce52736c~mv2.jpg)
 
 **Insights can be drawn:** 
 
-- The query returned 1 row, which indicates that the service team in the CVS should take more training to make sure all patients got the negative test result within 7 days before accept the vaccine.
+-	The query returned 1 row, which indicates that the service team in the CVS should take more training to make sure all patients got the negative test result within seven days before accepting the vaccine.
 
-### 9**.  Report: Incorrectly-given Vaccines: Brand**
+### 9**Report: Incorrectly given Vaccines: Brand**
 
-This report estimates whether there's incorrect shot given by staff. Only BioNTech matches the group of being 16 to 18 years old. If the patients in this age take the Moderna, it means the staff to give the shot makes the mistake. 
+This report shows whether an error has occurred in the vaccination process. Certain vaccines are meant for different age groups. Only BioNTech can be given to patients between 16 and 18 years old. If the patients in this age group take the Moderna vaccination, it means the staff gave the shot in error.
 
 ```sql
 /* - COLUMNS: Patient Name,Recommendation,Age,Vaccine Given,shot_no,
@@ -517,15 +515,15 @@ HAVING
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%203.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Untitled%203.png)
+![result_9_report](https://static.wixstatic.com/media/3fe52d_d4d9ff725dda4444a93835b5818b12fe~mv2.jpg)
 
 **Insights can be drawn:**
 
-- Staff Jeffrey and Carolyn made the mistakes with the same patient, which means staffs need to take more training on checking the medical recommendation to avoid this will be happened again.
+-	Staff members Jeffrey and Carolyn made mistakes with the same patient, which means they need more training on how to check the medical recommendations to avoid repeating this mistake in the future.
 
 ### 10**.  How many 2nd appointments are scheduled per location?**
 
-After the first shot, the patients need to make appointments for 2nd shot. For each appointment, the staffs ought to confirm the appointment based on the people amount restriction during the Covid. This query helps to check how many appointments haven’t been confirmed and which unconfirmed appointment is the earliest one for each location.
+After the first shot, the patients need to make appointments for the 2nd shot. Due to the fact that there are no walk-in sessions for the vaccine, each patient has to schedule an appointment in order to get the vaccine. This is due to the limited number of vaccines available and the government’s plan. The staff must check the patient’s info and confirm the appointment to make sure it is valid. This query shows how many appointments have not been confirmed, and how soon they will likely be confirmed based on availability.
 
 ```sql
 /* - COLUMNS: Unconfirmed 2nd shot, the earliest appointment
@@ -549,19 +547,17 @@ ORDER BY MIN(appointment_date_2);
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-29_at_6.50.58_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-29_at_6.50.58_PM.png)
+![result_10_report](https://static.wixstatic.com/media/3fe52d_fe3dfbf040b141ab98b264140c7693d0~mv2.jpg)
 
 **Insights can be drawn:**
 
-- At least 4+ vaccines are needed in inventory in order to meet the demand for upcoming second shots.
+-	At least 4+ vaccines are needed in inventory in order to meet the demand for upcoming second shots.
 
 # 5. SQL Procedures
 
 ### 1. Updating Table: Inventory
 
-**After consideration of the data structure, management has decided that the vaccine inventory needs to be updated in real time when a vaccine is used.** 
-
-This means that an additional columns are needed: date_used, used_by and the staff_idd column name gets updated to added_by to avoid confusion between the different staff members who added into the inventory sheet and who used the vaccine on the patient. 
+After considering the data structure, management has decided that the vaccine inventory needs to be updated in real-time when a vaccine is used. This means that additional columns are required: date_used, used_by, and the staff_idd column name gets updated to added_by to avoid confusion between the different staff members who added to the inventory sheet and who used the vaccine on the patient.
 
 ```sql
 -- Adding and altering columns
@@ -588,7 +584,7 @@ ADD CONSTRAINT `fk_vaccine_inventory_service`
 - Object Name: inventory_update
 - Input: vaccine_no, date, staff_id
 - Output Updated columns: date_used, used_by
-- Functionality: This SQL procedure makes sure that when a vaccine have beens given to a patient, the staff member will update the inventory.
+- Functionality: This SQL procedure makes sure that when a vaccine has been given to a patient, the staff member will update the inventory.
 
 **Procedure Code**
 
@@ -621,20 +617,20 @@ END
 
 **Result:** 
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.36.51_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-26_at_5.36.51_PM.png)
+![procudre_result_1](https://static.wixstatic.com/media/3fe52d_3d190e296acc41a4a1b6a5c4b87efd7f~mv2.jpg)
 
 ### 2. **Report: Government Export File**
 
-Every day, a report needs to be generated that can contain 200.000 rows. The report cannot contain previously exported records. Therefore, it is important to keep track of the last record_id that have been exported. The following day, the following record_id number has the be entered as the starting point of the new report. 
+Every day, a report needs to be generated that can contain 200.000 rows. The report cannot include previously exported records. Therefore, it is crucial to keep track of the last record_id that has been exported. The following day, the following record_id number has been entered as the starting point of the new report. 
 
 **Procedure details:** 
 
 - Schema Name: records, vaccine_info, vaccine_inventory, patient_info, admin_info, staff_info
 - Object Name: records_export
 - Input: record_id
-- Functionality: The procedure generates an overview of all the columns that needs to be recorded for all records that not have been exported yet.
+- Functionality: The procedure generates an overview of all the columns that need to be recorded for all records that have not been exported yet.
 
-In the future, the company can add an INTO OUTFILE possibility. This automatically generates a cvs file that is ready to go. 
+In the future, the company can add an INTO OUTFILE possibility. This automatically generates a CSV file that is ready to go.
 
 ```sql
 CREATE PROCEDURE `records_export`(IN in_record_no INT)
@@ -680,9 +676,9 @@ END
 
 **Call the procedure**
 
-Example: It is assumed that record_id 1 to 55, we part of yesterdays' report. Today, a new report need to be generated, starting from record_id 56. This generated a report up to 200000 different records. At the moment there are only 486 records available, which means the last record on this report is 541. 
+Example: It is assumed that record_id 1 to 55, we part of yesterdays' report. Today, a new report needs to be generated, starting from record_id 56. This generated a report of up to 200000 different records. At the moment, there are only 486 records available, which means the last record on this report is 541. 
 
-Tomorrow's report, should start at 542. Right now, this one is empty, as there are no records for this one yet.  
+Tomorrow's report should start at 542. Right now, this one is empty, as there are no records for this one yet.
 
 ```sql
 -- Call the procedure with the specific record_id 56. 
@@ -694,7 +690,7 @@ CALL `csv_database`.`records_export`(542);
 
 **Result:**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-29_at_4.31.45_PM.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/Screen_Shot_2021-01-29_at_4.31.45_PM.png)
+![procedure_report_2](https://static.wixstatic.com/media/3fe52d_14742d13fae34f6aad0a276800fc05bb~mv2.jpg)
 
 # 6. **Appendix**
 
