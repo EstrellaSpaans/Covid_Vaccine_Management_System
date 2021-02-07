@@ -77,7 +77,7 @@ This table shows the latest COVID-19 test of the patient and the results.
 
 # 3. **Entity-Relational (ER) Model**
 
-![CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/ER-Model.png](CVS's%20Covid%20Vaccination%20Management%20System%200f5160d08f6e44ef9150d587385a50f1/ER-Model.png)
+![ER-Model](https://static.wixstatic.com/media/3fe52d_2b22c6baa1034741bc2048c9448fa909~mv2.png)
 
 # 4. Meaningful Insights
 
