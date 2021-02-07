@@ -11,7 +11,7 @@ Collaborator: [Ruisheng Wang](https://github.com/rishonwang)
 
 CVS Pharmacy will be one of the leading carriers of the Covid Vaccine in the United States. It is widely known that this company has multiple chains in the United States. They also have an administrative office, which is located in Woonsocket, Rhode Island. Each department will have different dashboards that pull statistics through SQL queries from a database. In this project, we zoomed into the pharmacy locations in Boston. A web-based vaccine administration management application system (VAMS) will be used for each location that supports planning and execution (Centers for Disease Control and Prevention, 2020). The data gathered from the VAMS will be stored in the database.
 
-** Information that can be gathered:**
+** Information that can be gathered: **
 -  The number of vaccine given by each each staff member and when they worked. 
 -  The number of vaccines of each brand that are in stock for each location, which batches are utilized, the most popular location 
 -  The number of appointment scheduled for each location and the earliest appointment date. 
@@ -19,7 +19,7 @@ CVS Pharmacy will be one of the leading carriers of the Covid Vaccine in the Uni
 -  The number of people that are fully vaccinated by occupation. 
 -  The number of incorrectly given vaccines based on the latest covid test or brand type and by whom they were given. 
 
-## The Data Base Structure 
+## The Database Structure 
 
 | Table Name  | Primary Key | Foreign Key | Relationship |
 | ------------- | ------------- | ------------- | ------------- |
