@@ -188,7 +188,7 @@ ORDER BY
 -	There are more Moderna vaccines in stock compared to the Phizers BioNTech vaccine. 
 
 
-### 3**. Report: Stock Batch Inventory with Expiration Days**
+### 3. Report: Stock Batch Inventory with Expiration Days
 
 To manage inventory properly, the batches that expire the earliest should be consumed first. Inventory staff members are responsible for adding each batch into the inventory correctly, sorted from the earliest to the latest date. The service staff members have to make sure that they pick the right vaccine number and not accidentally choose a later batch. However, there will always be a case that the wrong batch gets selected because of human error. 
 
@@ -263,7 +263,7 @@ LIMIT 3;
 
 -	In order to meet the demand, the pharmacy located at '285 Columbus Ave.' does not have a lot of inventory available.
 
-### 5**. Report: Uninsured-Patients Administration**
+### 5. Report: Uninsured Patients Administration
 
 This query is important because it will list all the people who do not have insurance. The address of each patient is also presented, making it easier for the finance department to send a bill to each of these people (if this is applicable).
 
@@ -305,7 +305,7 @@ GROUP BY
 
 -	Approximately 70% of the uninsured 104 people  live in the suburbs of Boston.
 
-### 6**.  Report: Fully Vaccinated Patients**
+### 6.  Report: Fully Vaccinated Patients
 
 This information is essential information that can be shared with the government. It keeps track of the number of people that had both of their shots regardless of the type of vaccine. An accumulative overview of all vaccination locations gives the government a full view of each state's immunization progress.
 
@@ -345,7 +345,7 @@ GROUP BY
 
 -	There are more people with the Moderna vaccine that are vaccinated at the moment.
 
-### 7**. Report: Fully Vaccinated Patients By Occupation**
+### 7. Report: Fully Vaccinated Patients By Occupation
 
 The query indicates how many people in different Occupations have been vaccinated who live in Boston. This query could give the government additional information on whether most people are vaccinated according to the vaccine release stages.  
 
@@ -379,7 +379,7 @@ Order BY
 
 ![report_7_result](https://static.wixstatic.com/media/3fe52d_1e1b3116646f485ab9824a84136e4aba~mv2.jpg)
 
-### 8**. Report: Incorrectly given Vaccines: Covid-19 test**
+### 8. Report: Incorrectly given Vaccines: Covid-19 test
 
 How many patients received the vaccine despite having a "negative" test result older than seven days? This query was created to check if the staff members made a mistake. Considering the vaccine's effectiveness, patients need to show the negative testing result they got within 7 days prior to their vaccination. This report is created with a view, which makes it easy to access the report. 
 
@@ -446,7 +446,7 @@ WHERE
 
 -	The query returned 1 row, which indicates that the service team in the CVS should take more training to make sure all patients got the negative test result within seven days before accepting the vaccine.
 
-### 9**Report: Incorrectly given Vaccines: Brand**
+### 9. Report: Incorrectly given Vaccines: Brand
 
 This report shows whether an error has occurred in the vaccination process. Certain vaccines are meant for different age groups. Only BioNTech can be given to patients between 16 and 18 years old. If the patients in this age group take the Moderna vaccination, it means the staff gave the shot in error.
 
@@ -521,7 +521,7 @@ HAVING
 
 -	Staff members Jeffrey and Carolyn made mistakes with the same patient, which means they need more training on how to check the medical recommendations to avoid repeating this mistake in the future.
 
-### 10**.  How many 2nd appointments are scheduled per location?**
+### 10.  How many 2nd appointments are scheduled per location?
 
 After the first shot, the patients need to make appointments for the 2nd shot. Due to the fact that there are no walk-in sessions for the vaccine, each patient has to schedule an appointment in order to get the vaccine. This is due to the limited number of vaccines available and the government’s plan. The staff must check the patient’s info and confirm the appointment to make sure it is valid. This query shows how many appointments have not been confirmed, and how soon they will likely be confirmed based on availability.
 
@@ -619,7 +619,7 @@ END
 
 ![procudre_result_1](https://static.wixstatic.com/media/3fe52d_3d190e296acc41a4a1b6a5c4b87efd7f~mv2.jpg)
 
-### 2. **Report: Government Export File**
+### 2.Report: Government Export File
 
 Every day, a report needs to be generated that can contain 200.000 rows. The report cannot include previously exported records. Therefore, it is crucial to keep track of the last record_id that has been exported. The following day, the following record_id number has been entered as the starting point of the new report. 
 
