@@ -25,6 +25,7 @@ The pharmacy and the staff member's location are automatically recorded when the
 -	The finance staff members at the headquarters can get an overview of all uninsured people with their addresses to make it easier to do billing if this is applicable.
 -	Information about the vaccine progress can be reported.  A dashboard presents the number of people that have received both shots of the vaccination.  It also shows how many people have been vaccinated by Occupation. This helps to see whether the vaccination progress is going according to the phases of the government.
 -	Administration and operations are responsible for the quality control of the vaccine process. An overview could be generated when the vaccine date does not match the requirement of a seven-day-old test or when the patient's age did not match with the vaccine requirements.  There will also be an overview of all the patients who got the incorrect brand of the vaccine.  Each report will show who was responsible for the mistake.
+
 After the first trial of the data management system, CVS's chief data officer has decided to implement a procedure to update the inventory after a vaccine has been given to a patient to have up to date data. 
 
 
