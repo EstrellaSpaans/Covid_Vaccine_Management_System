@@ -36,7 +36,7 @@ CVS Pharmacy will be one of the leading carriers of the Covid Vaccine in the Uni
 | vaccine_info | vaccine_id | | Parent
 | appointment_info | appointment_id	 | patient_id | Parent
 | staff_info |staff_id | departments_id | Parent / Child
-| patient_id | patient_id | medical_record_id, insurance_id | Parent / Child
+| patient_id | patient_id | medical_record_id, insurance_id, appointment_id | Parent / Child
 | batch_info | batch_no, vaccine_id | vaccine_id | Parent / Child
 | vaccine_inventory | vaccine_no | batch_no, vaccine_id, location_id | Parent / Child
 | records | record_id | staff_id, patient_id, vaccine_id, vaccine_no, location_id | Child
