@@ -7,6 +7,8 @@ This project focused on the creation of a data management system for the covid-1
 
 Collaborator: [Ruisheng Wang](https://github.com/rishonwang) 
 
+NOTE: since there are some dates in the file, some of the query results might look different depending on when you are viewing this project. To get the correct results, please look at the full report that has screenshots of the results. 
+
 ## The Purpose
 
 CVS Pharmacy will be one of the leading carriers of the Covid Vaccine in the United States. It is widely known that this company has multiple chains in the United States. They also have an administrative office, which is located in Woonsocket, Rhode Island. Each department will have different dashboards that pull statistics through SQL queries from a database. In this project, we zoomed into the pharmacy locations in Boston. A web-based vaccine administration management application system (VAMS) will be used for each location that supports planning and execution (Centers for Disease Control and Prevention, 2020). The data gathered from the VAMS will be stored in the database.
