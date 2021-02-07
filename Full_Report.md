@@ -1,6 +1,6 @@
 # CVS's Covid Vaccination Management System
 
-# 1. **Flow of System**
+## 1. **Flow of System**
 
 CVS Pharmacy will be one of the leading carriers of the Covid Vaccine in the United States. It is widely known that this company has multiple chains in the United States. They also have an administrative office, which is located in Woonsocket, Rhode Island. Each department will have different dashboards that pull statistics through SQL queries from a database. In this assignment, it is assumed that we zoom into the pharmacy locations in Boston. A web-based vaccine administration management application system (VAMS) will be used for each location that supports planning and execution (Centers for Disease Control and Prevention, 2020). The data gathered from the VAMS will be stored in the database. 
 
@@ -29,7 +29,7 @@ The pharmacy and the staff member's location are automatically recorded when the
 After the first trial of the data management system, CVS's chief data officer has decided to implement a procedure to update the inventory after a vaccine has been given to a patient to have up to date data. 
 
 
-# 2. **Database Structure**
+## 2. **Database Structure**
 
 ![Database Structure](https://static.wixstatic.com/media/3fe52d_1d408210ffc94812971bdc69e2c95f51~mv2.png)
 
@@ -81,7 +81,7 @@ This table shows the latest COVID-19 test of the patient and the results.
 
 ![ER-Model](https://static.wixstatic.com/media/3fe52d_2b22c6baa1034741bc2048c9448fa909~mv2.png)
 
-# 4. Meaningful Insights
+## 4. Meaningful Insights
 
 ### 1. **Report: HR Daily Stats**
 
@@ -553,7 +553,7 @@ ORDER BY MIN(appointment_date_2);
 
 -	At least 4+ vaccines are needed in inventory in order to meet the demand for upcoming second shots.
 
-# 5. SQL Procedures
+## 5. SQL Procedures
 
 ### 1. Updating Table: Inventory
 
@@ -692,9 +692,9 @@ CALL `csv_database`.`records_export`(542);
 
 ![procedure_report_2](https://static.wixstatic.com/media/3fe52d_14742d13fae34f6aad0a276800fc05bb~mv2.jpg)
 
-# 6. **Appendix**
+## 6. **Appendix**
 
-## 6.1 Create Table Scripts
+### 6.1 Create Table Scripts
 
 ```sql
 -- MySQL Workbench Forward Engineering
@@ -959,7 +959,7 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 ```
 
-## 6.2 Insert scripts in Order
+### 6.2 Insert scripts in Order
 
 ```sql
 -- -----------------------------------------------------
